@@ -59,8 +59,8 @@ def format_price(n: int) -> str:
     return f"{n:,}".replace(",", "\u00a0") + " ₽"
 
 
-def esc(s: str) -> str:
-    return html_mod.escape(s) if s else ""
+def esc(s) -> str:
+    return html_mod.escape(str(s)) if s else ""
 
 
 # ─── CSS (yellow theme for Yandex Market) ────────────────────────
