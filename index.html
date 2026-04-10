@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Цена Дня | Яндекс.Маркет — Лучшие цены на Яндекс Маркете</title>
+<meta name="description" content="Самые дешёвые товары на Яндекс Маркете каждый день. 16 категорий, реальные скидки, проверенные цены.">
+<meta name="theme-color" content="#FF9800">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="canonical" href="https://kristall2002-art.github.io/tsena-dnya-yandex-site/">
+<meta property="og:title" content="Цена Дня | Яндекс.Маркет">
+<meta property="og:description" content="Самые дешёвые товары на Яндекс Маркете каждый день. 16 категорий, реальные скидки, проверенные цены.">
+<meta property="og:image" content="https://kristall2002-art.github.io/tsena-dnya-yandex-site/icon-512.png">
+<meta property="og:url" content="https://kristall2002-art.github.io/tsena-dnya-yandex-site/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#1a1400;
+  --bg2:#2a2000;
+  --bg3:#3a3010;
+  --purple:#FFD700;
+  --purple-dark:#FF9800;
+  --purple-light:#FFD700;
+  --accent:#e74c3c;
+  --green:#27ae60;
+  --text:#fff8e0;
+  --text2:#ccb870;
+  --text3:#8a7a4a;
+  --card-radius:14px;
+  --max-w:1200px;
+  --price-color:#fff;
+  --header-bg:linear-gradient(135deg,var(--purple-dark),#e68900);
+  --shadow-color:rgba(255,152,0,.4);
+}
+html.light{
+  --bg:#fffde7;
+  --bg2:#fff;
+  --bg3:#fff3cd;
+  --purple:#FF9800;
+  --purple-dark:#FF9800;
+  --purple-light:#e68900;
+  --text:#1a1400;
+  --text2:#5a4d20;
+  --text3:#8a7a4a;
+  --price-color:#1a1400;
+  --shadow-color:rgba(255,152,0,.15);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+.header{
+  background:linear-gradient(135deg,var(--purple-dark),#e68900);
+  padding:14px 20px;
+  z-index:100;
+  box-shadow:0 2px 20px rgba(255,152,0,.4);
+}
+.header-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;gap:14px}
+.header-logo{width:48px;height:48px;border-radius:12px;flex-shrink:0}
+.header-center{flex:1}
+.header-row1{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.logo span{color:var(--purple-light)}
+.header-sub{font-size:14px;color:rgba(255,255,255,.75);font-weight:500}
+.header-tg{font-size:13px;color:#fff;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:12px;display:inline-block;transition:background .2s}
+.header-tg:hover{background:rgba(255,255,255,.25)}
+.header-row2{display:flex;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap}
+.header-info{font-size:12px;color:rgba(255,255,255,.5)}
+.header-right{display:flex;align-items:center;flex-shrink:0}
+.theme-toggle{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.15);
+  border:none;
+  color:#fff;
+  padding:6px 14px;
+  border-radius:18px;
+  cursor:pointer;
+  font-size:13px;
+  transition:background .2s;
+  white-space:nowrap;
+}
+.theme-toggle:hover{background:rgba(255,255,255,.25)}
+.theme-toggle .icon{font-size:16px}
+
+/* Category bar */
+.cat-bar{
+  background:var(--bg2);
+  padding:12px 20px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  border-bottom:1px solid var(--bg3);
+  position:sticky;top:0;z-index:99;
+}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-bar-inner{max-width:var(--max-w);margin:0 auto;display:flex;gap:8px}
+.cat-btn{
+  flex-shrink:0;
+  padding:10px 20px;
+  border-radius:22px;
+  border:1px solid var(--bg3);
+  background:transparent;
+  color:var(--text2);
+  font-size:16px;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.cat-btn:hover{border-color:var(--purple);color:var(--text)}
+.cat-btn.active{
+  background:var(--purple-dark);
+  border-color:var(--purple);
+  color:#fff;
+}
+.cat-btn .count{
+  font-size:11px;
+  background:rgba(255,255,255,.15);
+  padding:2px 6px;
+  border-radius:10px;
+  margin-left:6px;
+}
+.cat-btn.active .count{background:rgba(255,255,255,.25)}
+
+/* Main */
+.main{max-width:var(--max-w);margin:0 auto;padding:20px}
+.section-title{
+  font-size:18px;font-weight:700;
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title .emoji{font-size:22px}
+
+/* Grid toggle */
+.grid-toggle{
+  display:flex;gap:4px;align-items:center;
+  background:var(--bg2);
+  border:1px solid var(--bg3);
+  border-radius:10px;
+  padding:3px;
+}
+.grid-btn{
+  border:none;background:transparent;color:var(--text3);
+  padding:6px 10px;border-radius:8px;cursor:pointer;
+  font-size:16px;transition:all .2s;line-height:1;
+}
+.grid-btn:hover{color:var(--text)}
+.grid-btn.active{background:var(--purple-dark);color:#fff}
+
+/* Product grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+  margin-bottom:32px;
+}
+.grid.cols-1{grid-template-columns:1fr}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-3 .card-body{padding:10px}
+.grid.cols-3 .card-name{font-size:13px;-webkit-line-clamp:1}
+.grid.cols-3 .price-now{font-size:16px}
+.grid.cols-3 .price-old{font-size:11px}
+.grid.cols-3 .price-discount{font-size:11px}
+.grid.cols-3 .card-footer{font-size:11px}
+.grid.cols-3 .card-cat{font-size:10px}
+.grid.cols-3 .card-brand{font-size:10px}
+.grid.cols-5{grid-template-columns:repeat(5,1fr);gap:8px}
+.grid.cols-5 .card-body{padding:6px}
+.grid.cols-5 .card-name{font-size:11px;-webkit-line-clamp:1}
+.grid.cols-5 .card-brand{font-size:9px}
+.grid.cols-5 .price-now{font-size:14px}
+.grid.cols-5 .price-old{font-size:10px}
+.grid.cols-5 .price-discount{font-size:10px}
+.grid.cols-5 .card-footer{font-size:10px}
+.grid.cols-5 .card-cat{display:none}
+
+/* Product card */
+.card{
+  background:var(--bg2);
+  border-radius:var(--card-radius);
+  overflow:hidden;
+  border:1px solid var(--bg3);
+  transition:transform .2s,box-shadow .2s;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px rgba(255,152,0,.3);
+  border-color:var(--purple-dark);
+}
+.card-img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:contain;
+  background:var(--bg3);
+  display:block;
+}
+.card-img.no-img{
+  display:flex;align-items:center;justify-content:center;
+  font-size:48px;color:var(--text3);
+}
+.card-body{padding:14px}
+.card-brand{font-size:12px;color:var(--purple-light);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.card-name{font-size:14px;color:var(--text);margin-top:4px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-prices{margin-top:10px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price-now{font-size:22px;font-weight:800;color:var(--price-color)}
+.price-old{font-size:14px;color:var(--text3);text-decoration:line-through}
+.price-discount{
+  font-size:12px;font-weight:700;
+  background:var(--accent);
+  color:#fff;
+  padding:2px 8px;
+  border-radius:6px;
+}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--bg3);
+}
+.card-rating{font-size:13px;color:var(--text2)}
+.card-cat{font-size:11px;color:var(--text2);margin-top:4px;opacity:0.7}
+.card-rating .star{color:#f1c40f}
+.card-reviews{font-size:12px;color:var(--text3)}
+
+/* Empty state */
+.empty{
+  text-align:center;padding:60px 20px;color:var(--text3);
+}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.empty-text{font-size:16px}
+
+/* Footer */
+.footer{
+  text-align:center;padding:24px;
+  color:var(--text3);font-size:13px;
+  border-top:1px solid var(--bg3);
+  margin-top:40px;
+}
+.footer a{color:var(--purple-light)}
+
+/* Ad banner */
+.ad-banner{
+  background:linear-gradient(135deg,#e74c3c,#c0392b);
+  padding:12px 20px;
+  display:none;
+}
+.ad-banner-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;align-items:center;gap:14px;
+}
+.ad-banner-img{
+  width:56px;height:56px;border-radius:10px;
+  object-fit:cover;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.3);
+}
+.ad-banner-text{flex:1;min-width:0}
+.ad-banner-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  color:rgba(255,255,255,.7);letter-spacing:1px;
+}
+.ad-banner-name{
+  font-size:14px;font-weight:700;color:#fff;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ad-banner-price{font-size:18px;font-weight:800;color:#fff}
+.ad-banner-old{font-size:12px;color:rgba(255,255,255,.6);text-decoration:line-through;margin-left:6px}
+.ad-banner-buy{
+  flex-shrink:0;padding:8px 20px;
+  background:#fff;color:#e74c3c;
+  border-radius:8px;font-weight:700;font-size:13px;
+  text-decoration:none;transition:opacity .2s;
+}
+.ad-banner-buy:hover{opacity:.85}
+@media(max-width:600px){
+  .ad-banner-inner{gap:10px}
+  .ad-banner-img{width:44px;height:44px}
+  .ad-banner-name{font-size:12px}
+  .ad-banner-price{font-size:15px}
+  .ad-banner-buy{padding:6px 14px;font-size:12px}
+}
+
+/* Ad card highlight */
+.card.ad-card{
+  border:2px solid #e74c3c;
+  position:relative;
+}
+.card.ad-card .ad-badge{
+  position:absolute;top:8px;left:8px;z-index:2;
+  background:#e74c3c;color:#fff;
+  font-size:10px;font-weight:700;
+  padding:3px 8px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+
+.ad-btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 24px;
+  background:var(--header-bg);
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  transition:opacity .2s;
+}
+.ad-btn:hover{opacity:.85}
+
+/* Loading */
+.loading{text-align:center;padding:60px;color:var(--text3)}
+.spinner{
+  width:36px;height:36px;
+  border:3px solid var(--bg3);
+  border-top-color:var(--purple);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin:0 auto 12px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Responsive */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr;gap:12px}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);gap:8px}
+  .grid.cols-2 .card-body{padding:8px}
+  .grid.cols-2 .price-now{font-size:18px}
+  .grid.cols-2 .card-name{font-size:13px}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);gap:6px}
+  .grid.cols-3 .card-body{padding:6px}
+  .grid.cols-3 .price-now{font-size:13px}
+  .grid.cols-3 .card-name{font-size:11px}
+  .grid.cols-3 .card-footer{display:none}
+  .grid.cols-5{grid-template-columns:repeat(3,1fr);gap:6px}
+  .grid.cols-5 .card-body{padding:4px}
+  .grid.cols-5 .price-now{font-size:12px}
+  .grid.cols-5 .card-name{font-size:10px}
+  .grid.cols-5 .card-footer{display:none}
+  .card-body{padding:12px}
+  .price-now{font-size:20px}
+  .card-name{font-size:14px}
+  .header{position:relative;padding:10px 14px}
+  .header-logo{width:40px;height:40px;border-radius:10px}
+  .logo{font-size:17px}
+  .header-sub{font-size:12px}
+  .header-row1{gap:6px}
+  .main{padding:14px}
+  .cat-btn{font-size:14px;padding:8px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <img class="header-logo" src="logo.png" alt="Цена Дня">
+    <div class="header-center">
+      <div class="header-row1">
+        <h1 class="logo">Цена Дня <span>| Яндекс Маркет</span></h1>
+        <div class="header-sub">Поиск самых низких цен на товары каждый день</div>
+      </div>
+      <div class="header-row2">
+        <span class="header-tg">Ещё больше товаров в нашей Telegram-группе 👉 <a href="https://t.me/tsena_dnya_ym" target="_blank" style="color:#fff;text-decoration:underline">Цена Дня | ЯМ</a></span>
+        <div class="header-info" id="updated"></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="theme-toggle" id="themeBtn"><span id="themeLabel">Светлая тема</span> <span class="icon" id="themeIcon">☀️</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="ad-banner" id="adBanner">
+  <a class="ad-banner-inner" id="adBannerLink" href="#" target="_blank" rel="noopener">
+    <img class="ad-banner-img" id="adBannerImg" src="" alt="">
+    <div class="ad-banner-text">
+      <div class="ad-banner-label">🔥 Реклама</div>
+      <div class="ad-banner-name" id="adBannerName"></div>
+      <span class="ad-banner-price" id="adBannerPrice"></span>
+      <span class="ad-banner-old" id="adBannerOld"></span>
+    </div>
+    <span class="ad-banner-buy">Купить</span>
+  </a>
+</div>
+
+<nav class="cat-bar">
+  <div class="cat-bar-inner">
+    <div class="grid-toggle" id="gridToggle">
+      <button class="grid-btn" data-cols="1" title="1 в ряд">▬</button>
+      <button class="grid-btn active" data-cols="2" title="2 в ряд">▥</button>
+      <button class="grid-btn" data-cols="3" title="3 в ряд">▦</button>
+      <button class="grid-btn" data-cols="5" title="5 в ряд">▩</button>
+    </div>
+    <div id="catBar" style="display:contents"></div>
+  </div>
+</nav>
+
+<main class="main" id="app">
+  <div class="loading"><div class="spinner"></div>Загрузка товаров...</div>
+</main>
+
+<footer class="footer">
+  Цена Дня | Яндекс Маркет — лучшие цены на Яндекс Маркете каждый день<br>
+  <a href="https://t.me/tsena_dnya_yandex" target="_blank">Telegram</a> · Данные обновляются каждые 10 минут<br>
+  <a class="ad-btn" href="https://t.me/tsena_dnya_yandex_bot?start=ad" target="_blank">📢 Заказ рекламы на сайте и в Telegram-канале</a>
+  <br>
+  <a class="ad-btn" href="https://t.me/tsena_dnya_yandex_bot" target="_blank" style="background:var(--bg3);color:var(--text);margin-top:8px">🤝 Стать менеджером — зарабатывай на привлечении рекламодателей</a>
+  <br>
+  <a class="ad-btn" href="https://t.me/Tsenya_dnya_wb_admin" target="_blank" style="background:var(--bg3);color:var(--text);margin-top:8px">📩 Связь с администратором</a>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+
+let DATA = null;
+let CATS = null;
+let ADS = [];
+let activeCat = 'all';
+
+async function init() {
+  try {
+    const [prodResp, catResp, adsResp] = await Promise.all([
+      fetch('data/products.json'),
+      fetch('data/categories.json'),
+      fetch('data/ads.json').catch(() => ({ok:false})),
+    ]);
+    DATA = await prodResp.json();
+    CATS = await catResp.json();
+    if (adsResp.ok) ADS = await adsResp.json();
+  } catch (e) {
+    $('#app').innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Не удалось загрузить данные</div></div>';
+    return;
+  }
+
+  if (DATA.updatedAt) {
+    const d = new Date(DATA.updatedAt + 'Z');
+    $('#updated').textContent = 'Обновлено: ' + d.toLocaleString('ru-RU', {hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'});
+  }
+
+  renderAdBanner();
+  renderCatBar();
+  renderProducts();
+}
+
+function renderAdBanner() {
+  if (!ADS || !ADS.length) return;
+  const ad = ADS[0];
+  const banner = $('#adBanner');
+  const img = ad.image || '';
+  if (img) $('#adBannerImg').src = img;
+  else $('#adBannerImg').style.display = 'none';
+  $('#adBannerName').textContent = (ad.brand ? ad.brand + ' ' : '') + ad.name;
+  const price = ad.price;
+  $('#adBannerPrice').textContent = formatPrice(price);
+  if (ad.oldPrice && ad.oldPrice > price) {
+    $('#adBannerOld').textContent = formatPrice(ad.oldPrice);
+  } else {
+    $('#adBannerOld').style.display = 'none';
+  }
+  $('#adBannerLink').href = ad.url || ('https://market.yandex.ru/product/' + ad.article);
+  banner.style.display = 'block';
+}
+
+function renderCatBar() {
+  const bar = $('#catBar');
+  const total = CATS.reduce((s, c) => s + c.count, 0);
+
+  let html = `<button class="cat-btn active" data-cat="all">Все<span class="count">${total}</span></button>`;
+  for (const c of CATS) {
+    if (c.count === 0) continue;
+    html += `<button class="cat-btn" data-cat="${c.name}">${c.emoji} ${c.name}<span class="count">${c.count}</span></button>`;
+  }
+  bar.innerHTML = html;
+
+  bar.addEventListener('click', e => {
+    const btn = e.target.closest('.cat-btn');
+    if (!btn) return;
+    activeCat = btn.dataset.cat;
+    bar.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts();
+  });
+}
+
+function formatPrice(n) {
+  return n.toLocaleString('ru-RU') + ' ₽';
+}
+
+function renderAdCards() {
+  if (!ADS || !ADS.length) return '';
+  let html = '';
+  for (const ad of ADS) {
+    const price = ad.price;
+    const hasDiscount = ad.oldPrice && ad.oldPrice > price;
+    const discount = hasDiscount ? Math.round((ad.oldPrice - price) / ad.oldPrice * 100) : 0;
+    const url = ad.url || ('https://market.yandex.ru/product/' + ad.article);
+    let imgHtml;
+    if (ad.image) {
+      imgHtml = `<img class="card-img" src="${ad.image}" alt="${esc(ad.name)}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-img no-img\\'>📦</div>'">`;
+    } else {
+      imgHtml = '<div class="card-img no-img">📦</div>';
+    }
+    html += `
+      <a class="card ad-card" href="${url}" target="_blank" rel="noopener">
+        <span class="ad-badge">🔥 Реклама</span>
+        ${imgHtml}
+        <div class="card-body">
+          ${ad.brand ? `<div class="card-brand">${esc(ad.brand)}</div>` : ''}
+          <div class="card-name">${esc(ad.name)}</div>
+          <div class="card-prices">
+            <span class="price-now">${formatPrice(price)}</span>
+            ${hasDiscount ? `<span class="price-old">${formatPrice(ad.oldPrice)}</span><span class="price-discount">-${discount}%</span>` : ''}
+          </div>
+          <div class="card-footer">
+            <span class="card-rating"><span class="star">⭐</span> ${ad.rating || '—'}</span>
+            <span class="card-reviews">${ad.reviews || ''}</span>
+          </div>
+        </div>
+      </a>`;
+  }
+  return html;
+}
+
+function renderProducts() {
+  const app = $('#app');
+  const cats = DATA.categories;
+
+  if (activeCat !== 'all') {
+    const products = cats[activeCat] || [];
+    const catInfo = CATS.find(c => c.name === activeCat);
+    app.innerHTML = renderSection(activeCat, catInfo?.emoji || '', products);
+    applyGrid();
+    return;
+  }
+
+  // "All categories" — mixed feed sorted by date
+  let allProducts = [];
+  for (const c of CATS) {
+    const products = cats[c.name] || [];
+    for (const p of products) {
+      p._cat = c.name;
+      p._emoji = c.emoji;
+      allProducts.push(p);
+    }
+  }
+  allProducts.sort((a, b) => (b.postedAt || '').localeCompare(a.postedAt || ''));
+
+  let html = '';
+  if (allProducts.length > 0) {
+    html = '<h2 class="section-title"><span class="emoji">🔥</span>Все товары</h2><div class="grid">';
+    // Ad cards first.
+    html += renderAdCards();
+    for (const p of allProducts.slice(0, 60)) {
+      const price = p.price;
+      const hasDiscount = p.oldPrice && p.oldPrice > price;
+      const discount = hasDiscount ? Math.round((p.oldPrice - price) / p.oldPrice * 100) : 0;
+      const url = p.article ? `https://market.yandex.ru/product/${p.article}` : (p.url || '#');
+
+      let imgHtml;
+      if (p.image) {
+        imgHtml = `<img class="card-img" src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-img no-img\\'>📦</div>'">`;
+      } else {
+        imgHtml = '<div class="card-img no-img">📦</div>';
+      }
+
+      html += `
+        <a class="card" href="${url}" target="_blank" rel="noopener">
+          ${imgHtml}
+          <div class="card-body">
+            ${p.brand ? `<div class="card-brand">${esc(p.brand)}</div>` : ''}
+            <div class="card-name">${esc(p.name)}</div>
+            <div class="card-prices">
+              <span class="price-now">${formatPrice(price)}</span>
+              ${hasDiscount ? `<span class="price-old">${formatPrice(p.oldPrice)}</span><span class="price-discount">-${discount}%</span>` : ''}
+            </div>
+            <div class="card-footer">
+              <span class="card-rating"><span class="star">⭐</span> ${p.rating || '—'}</span>
+              <span class="card-reviews">${p.reviews || ''}</span>
+            </div>
+            <div class="card-cat">${p._emoji} ${p._cat}</div>
+          </div>
+        </a>`;
+    }
+    html += '</div>';
+  }
+
+  if (!html) {
+    html = '<div class="empty"><div class="empty-icon">📭</div><div class="empty-text">Пока нет товаров</div></div>';
+  }
+  app.innerHTML = html;
+  applyGrid();
+}
+
+function renderSection(name, emoji, products) {
+  let html = `<h2 class="section-title"><span class="emoji">${emoji}</span>${name}</h2><div class="grid">`;
+
+  for (const p of products) {
+    const price = p.price;
+    const hasDiscount = p.oldPrice && p.oldPrice > price;
+    const discount = hasDiscount ? Math.round((p.oldPrice - price) / p.oldPrice * 100) : 0;
+    const url = p.article ? `https://market.yandex.ru/product/${p.article}` : (p.url || '#');
+
+    let imgHtml;
+    if (p.image) {
+      imgHtml = `<img class="card-img" src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="this.outerHTML='<div class=\\'card-img no-img\\'>📦</div>'">`;
+    } else {
+      imgHtml = '<div class="card-img no-img">📦</div>';
+    }
+
+    html += `
+      <a class="card" href="${url}" target="_blank" rel="noopener">
+        ${imgHtml}
+        <div class="card-body">
+          ${p.brand ? `<div class="card-brand">${esc(p.brand)}</div>` : ''}
+          <div class="card-name">${esc(p.name)}</div>
+          <div class="card-prices">
+            <span class="price-now">${formatPrice(price)}</span>
+            ${hasDiscount ? `<span class="price-old">${formatPrice(p.oldPrice)}</span><span class="price-discount">-${discount}%</span>` : ''}
+          </div>
+          <div class="card-footer">
+            <span class="card-rating"><span class="star">⭐</span> ${p.rating || '—'}</span>
+            <span class="card-reviews">${p.reviews || ''}</span>
+          </div>
+        </div>
+      </a>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Grid toggle
+let gridMode = localStorage.getItem('gridMode');
+if (!['1','2','3','5'].includes(gridMode)) gridMode = '2';
+function applyGrid() {
+  document.querySelectorAll('.grid').forEach(g => {
+    g.classList.remove('cols-1','cols-2','cols-3','cols-5');
+    if (gridMode !== 'auto') g.classList.add('cols-' + gridMode);
+  });
+  document.querySelectorAll('.grid-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.cols === gridMode);
+  });
+}
+$('#gridToggle').addEventListener('click', e => {
+  const btn = e.target.closest('.grid-btn');
+  if (!btn) return;
+  gridMode = btn.dataset.cols;
+  localStorage.setItem('gridMode', gridMode);
+  applyGrid();
+});
+
+// Theme toggle
+const themeBtn = $('#themeBtn');
+const themeLabel = $('#themeLabel');
+const themeIcon = $('#themeIcon');
+function updateThemeBtn(isLight) {
+  themeLabel.textContent = isLight ? 'Тёмная тема' : 'Светлая тема';
+  themeIcon.textContent = isLight ? '🌙' : '☀️';
+}
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.add('light');
+  updateThemeBtn(true);
+}
+themeBtn.addEventListener('click', () => {
+  const isLight = document.documentElement.classList.toggle('light');
+  updateThemeBtn(isLight);
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+});
+
+init();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+</body>
+</html>

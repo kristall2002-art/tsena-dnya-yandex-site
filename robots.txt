@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kristall2002-art.github.io/tsena-dnya-yandex-site/sitemap.xml
